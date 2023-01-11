@@ -56,6 +56,13 @@ public class PersonaService {
         personaExistente.setMusicaPropia(musicaantes);
         return repository.save(personaExistente);
     }
+    public Persona updateMusicaGuardada(String music, String id){
+        Persona personaExistente=repository.findById(id).get();
+        List<String>musicaantes=personaExistente.getMusicaGuardada();
+        musicaantes.add(music);
+        personaExistente.setMusicaGuardada(musicaantes);
+        return repository.save(personaExistente);
+    }
     public String deletePersona(String id){
         repository.deleteById(id);
         return "Usuario borrado correctamente";
@@ -65,6 +72,14 @@ public class PersonaService {
         List<String>musicaantes=personaExistente.getMusicaPropia();
         musicaantes.remove(idm);
         personaExistente.setMusicaPropia(musicaantes);
+        repository.save(personaExistente);
+        return "Canción eliminada correctamente";
+    }
+    public String deleteMusicaGuardada(String id, String idm){
+        Persona personaExistente=repository.findById(id).get();
+        List<String>musicaantes=personaExistente.getMusicaGuardada();
+        musicaantes.remove(idm);
+        personaExistente.setMusicaGuardada(musicaantes);
         repository.save(personaExistente);
         return "Canción eliminada correctamente";
     }

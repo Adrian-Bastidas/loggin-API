@@ -46,6 +46,8 @@ public class PersonaController {
     public Persona modifyPersona(@RequestBody Persona persona){
         return service.updatePersona(persona);
     }
+    @PutMapping("/musicaAPI/{id}")
+    public Persona updateMusicaGuardada(@RequestBody String music, @PathVariable String id){return service.updateMusicaGuardada(music, id);}
     @PutMapping("/musicaUsuario/{id}")
     public Persona updateMusicaPersona(@RequestBody String music, @PathVariable String id){return service.updateMusicaPersona(music, id);}
     @PutMapping("/ultima/{id}/{codigo}")
@@ -57,5 +59,9 @@ public class PersonaController {
     @DeleteMapping("/musica/{id}/{idm}")
     public String deleteMusica(@PathVariable String id,@PathVariable String idm){
         return service.deleteMusica(id,idm);
+    }
+    @DeleteMapping("/musicaAPI/{id}/{idm}")
+    public String deleteMusicaGuardada(@PathVariable String id,@PathVariable String idm){
+        return service.deleteMusicaGuardada(id,idm);
     }
 }
