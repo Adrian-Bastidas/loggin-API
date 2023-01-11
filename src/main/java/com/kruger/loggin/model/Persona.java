@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Document(collection= "Usuarios")
 @Data
 @AllArgsConstructor
@@ -19,4 +22,8 @@ public class Persona {
     private String correo;
     private String contraseña;
     private String foto;
+    private List<String> musicaPropia=new ArrayList<String>();
+    private List<String> musicaGuardada=new ArrayList<String>();
+    private String idUltima;
+
 }

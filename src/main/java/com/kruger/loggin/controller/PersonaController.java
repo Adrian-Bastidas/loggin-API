@@ -1,5 +1,6 @@
 package com.kruger.loggin.controller;
 
+import com.kruger.loggin.model.Music;
 import com.kruger.loggin.model.Persona;
 import com.kruger.loggin.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class PersonaController {
     public Persona createPersona(@RequestBody Persona persona){
         return service.addPersona(persona);
     }
+
     @GetMapping
     public List<Persona> getAll(){
         return service.findAll();
@@ -44,8 +46,16 @@ public class PersonaController {
     public Persona modifyPersona(@RequestBody Persona persona){
         return service.updatePersona(persona);
     }
+    @PutMapping("/musicaUsuario/{id}")
+    public Persona updateMusicaPersona(@RequestBody String music, @PathVariable String id){return service.updateMusicaPersona(music, id);}
+    @PutMapping("/ultima/{id}/{codigo}")
+    public Persona updateUltima(@PathVariable String id, @PathVariable String codigo){return service.updateUltima(id,codigo);}
     @DeleteMapping("/{id}")
     public String deletePersona(@PathVariable String id){
         return service.deletePersona(id);
+    }
+    @DeleteMapping("/musica/{id}/{idm}")
+    public String deleteMusica(@PathVariable String id,@PathVariable String idm){
+        return service.deleteMusica(id,idm);
     }
 }
