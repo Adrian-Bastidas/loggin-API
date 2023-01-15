@@ -31,7 +31,7 @@ public class PersonaController {
         return service.getbyId(id);
     }
 
-    @GetMapping("/correo{correo}")
+    @GetMapping("/correo/{correo}")
     public Persona getCorreo(@PathVariable String correo){
         return service.getbyCorreo(correo);
     }
