@@ -82,6 +82,10 @@ public class PersonaController {
     public String deleteMusica(@PathVariable String id,@PathVariable String idm){
         return service.deleteMusica(id,idm);
     }
+    @DeleteMapping("musicaGuardada/{id}")
+    public String deleteMusica(@PathVariable String id){
+        return servicem.deleteMusica(id);
+    }
     @DeleteMapping("/musicaAPI/{id}/{idm}")
     public String deleteMusicaGuardada(@PathVariable String id,@PathVariable String idm){
         return service.deleteMusicaGuardada(id,idm);
