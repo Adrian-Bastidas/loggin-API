@@ -11,39 +11,39 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
-@RequestMapping("/musica")
+@RequestMapping("/")
 public class MusicController {
     @Autowired
-    private MusicService service;
+    private MusicService servicem;
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Music addMusica(@RequestBody Music music){
-        return service.addMusica(music);
+        return servicem.addMusica(music);
     }
 
     @GetMapping
     public List<Music> findAllMusic(){
-        return service.findAllMusic();
+        return servicem.findAllMusic();
     }
     @GetMapping("/{id}")
     public Music getPersona(@PathVariable String id){
-        return service.getbyId(id);
+        return servicem.getbyId(id);
     }
 
     @GetMapping("/titulo/{titulo}")
     public List<Music> getbyTitulo(@PathVariable String titulo){
-        return service.getbyTitulo(titulo);
+        return servicem.getbyTitulo(titulo);
     }
     @GetMapping("/nombre/{name}")
     public List<Music> getbyNombre(@PathVariable String name){
-        return service.getbyNombre(name);
+        return servicem.getbyNombre(name);
     }
     @PutMapping
     public Music updateMusica(@RequestBody Music music){
-        return service.updateMusica(music);
+        return servicem.updateMusica(music);
     }
     @DeleteMapping("/{id}")
     public String deleteMusica(@PathVariable String id){
-        return service.deleteMusica(id);
+        return servicem.deleteMusica(id);
     }
 }

@@ -2,6 +2,7 @@ package com.kruger.loggin.controller;
 
 import com.kruger.loggin.model.Music;
 import com.kruger.loggin.model.Persona;
+import com.kruger.loggin.service.MusicService;
 import com.kruger.loggin.service.PersonaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,18 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 @RequestMapping("/usuarios")
 public class PersonaController {
+    @Autowired
+    private MusicService servicem;
+    @PostMapping("/musicadb/postear")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Music addMusica(@RequestBody Music music){
+        return servicem.addMusica(music);
+    }
+
+    @GetMapping("/musicadb")
+    public List<Music> findAllMusic(){
+        return servicem.findAllMusic();
+    }
 
     @Autowired
     private PersonaService service;
@@ -49,8 +62,8 @@ public class PersonaController {
     }
     @PutMapping("/musicaAPI/{id}")
     public Persona updateMusicaGuardada(@RequestBody String music, @PathVariable String id){return service.updateMusicaGuardada(music, id);}
-    @PutMapping("/musicaUsuario/{id}")
-    public Persona updateMusicaPersona(@RequestBody String music, @PathVariable String id){return service.updateMusicaPersona(music, id);}
+    @PutMapping("/musicaUsuario/{id}/{IDMUSICA}")
+    public Persona updateMusicaPersona( @PathVariable String id, @PathVariable String IDMUSICA){return service.updateMusicaPersona(IDMUSICA, id);}
     @PutMapping("/ultima/{id}/{codigo}")
     public Persona updateUltima(@PathVariable String id, @PathVariable String codigo){return service.updateUltima(id,codigo);}
     @DeleteMapping("/{id}")
