@@ -47,7 +47,7 @@ public class PersonaController {
     public Persona getPersona(@PathVariable String id){
         return service.getbyId(id);
     }
-    @PutMapping("/musicaUpdate/{id}")
+    @PutMapping("/musicaUpdate")
     public Music updateMusica(@RequestBody Music music){
         return servicem.updateMusica(music);
     }
