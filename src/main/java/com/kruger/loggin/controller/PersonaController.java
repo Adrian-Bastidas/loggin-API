@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 @RequestMapping("/usuarios")
 public class PersonaController {
 
@@ -31,7 +31,7 @@ public class PersonaController {
         return service.getbyId(id);
     }
 
-    @GetMapping("/correo/{correo}")
+    @GetMapping("/correo{correo}")
     public Persona getCorreo(@PathVariable String correo){
         return service.getbyCorreo(correo);
     }
