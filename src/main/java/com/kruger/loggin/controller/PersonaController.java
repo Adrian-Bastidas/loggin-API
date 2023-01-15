@@ -39,6 +39,10 @@ public class PersonaController {
     public List<Persona> getAll(){
         return service.findAll();
     }
+    @GetMapping("/musica/{id}")
+    public Music getMusica(@PathVariable String id){
+        return servicem.getbyId(id);
+    }
     @GetMapping("/{id}")
     public Persona getPersona(@PathVariable String id){
         return service.getbyId(id);

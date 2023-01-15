@@ -26,7 +26,7 @@ public class MusicController {
         return servicem.findAllMusic();
     }
     @GetMapping("/{id}")
-    public Music getPersona(@PathVariable String id){
+    public Music getMusica(@PathVariable String id){
         return servicem.getbyId(id);
     }
 
