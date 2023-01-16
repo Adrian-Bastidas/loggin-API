@@ -52,6 +52,10 @@ public class PersonaController {
         return servicem.updateMusica(music);
     }
 
+    @GetMapping("/titulo/{titulo}")
+    public List<Music> getbyTitulo(@PathVariable String titulo){
+        return servicem.getbyTitulo(titulo);
+    }
     @GetMapping("/correo/{correo}")
     public Persona getCorreo(@PathVariable String correo){
         return service.getbyCorreo(correo);
